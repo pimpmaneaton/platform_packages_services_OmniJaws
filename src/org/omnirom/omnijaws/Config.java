@@ -20,7 +20,6 @@ package org.omnirom.omnijaws;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
-import android.provider.Settings;
 
 public class Config {
     public static final String PREF_KEY_PROVIDER = "provider";
@@ -148,12 +147,6 @@ public class Config {
     public static boolean setEnabled(Context context, boolean value) {
         SharedPreferences prefs = PreferenceManager
                 .getDefaultSharedPreferences(context);
-
-        if (!value) {
-            // Disable statusbar weather
-            Settings.System.putInt(context.getContentResolver(),
-                    Settings.System.STATUS_BAR_SHOW_WEATHER_TEMP, 0);
-        }
 
         return prefs.edit().putBoolean(PREF_KEY_ENABLE, value).commit();
     }
